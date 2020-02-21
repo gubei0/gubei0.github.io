@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    浅谈大数据分析技术与医疗应用 |  顾北
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/images/ayer.png" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="顾北" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-浅谈大数据分析技术与医疗应用" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  浅谈大数据分析技术与医疗应用
+</h1>
+  
+
+    </header>
+    
+    
+    <div class="article-meta">
+      <a href="/2020/02/21/%E6%B5%85%E8%B0%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%8C%BB%E7%96%97%E5%BA%94%E7%94%A8/" class="article-date">
+  <time datetime="2020-02-21T06:59:35.000Z" itemprop="datePublished">2020-02-21</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.9k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">13分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p><img src="https://s2.ax1x.com/2020/02/21/3uJl26.jpg" alt="enter description here"></p>
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h2><p>“大数据”的概念已经提出了很多年。从一开始的神秘到如今的快速发展，对人们的生活产生了巨大的影响。从当初在巴士站、的士站人们的久久等待到如今随手滴滴打车的迅速接驾，从起初淘宝购物大海捞针似地寻找心仪的商品到如今淘宝主页精准的商品推荐，从当初为了美食一家一家店的尝试到如今根据美团推荐随心所欲挑选心仪饭店，可以说“大数据”已经渗入到生活的方方面面，为人们的生活提供了巨大的便利。</p>
+<p>随着大数据浪潮的到来，政府通过出台一系列大数据产业发展规划与战略文件，持续推动大数据技术产业与传统领域实现全方位融合，促进我国经济结构转型的升级、提升经济发展质量和国际竞争力。<a id="more"></a></p>
+<p>随着信息爆炸时代的到来，信息数据本身所具有的大量性、高速性、多样性为数据科学和大数据技术带来了天然的应用场景。</p>
+<p>大数据技术的体系庞大且复杂，基础的技术包含数据的采集、数据预处理、分布式存储、NoSQL数据库、数据仓库、机器学习、并行计算、可视化等各种技术范畴和不同的技术层面。首先给出一个通用化的大数据处理框架，主要分为下面几个方面：数据采集与预处理、数据存储、数据清洗、数据查询分析和数据可视化。</p>
+<p>大数据（big data）是指无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合，是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产。大数据的5V特点（IBM提出）：Volume（大量）、Velocity（高速）、Variety（多样）、Value（低价值密度）、Veracity（真实性）。</p>
+<h2 id="2-大数据的定义"><a href="#2-大数据的定义" class="headerlink" title="2.大数据的定义"></a>2.大数据的定义</h2><p>“大数据”（Big data）是指无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合 。“大数据”（Big data）研究机构Gartner给出了这样的定义：“大数据”是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力来适应海量、高增长率和多样化的信息资产。</p>
+<p>大数据技术的战略意义不在于掌握庞大的数据信息，而在于对这些含有意义的数据进行专业化处理。换而言之，如果把大数据比作一种产业，那么这种产业实现盈利的关键，在于提高对数据的“加工能力”，通过“加工”实现数据的“增值”。</p>
+<p>大数据需要特殊的技术，以有效地处理大量的容忍经过时间内的数据。适用于大数据的技术，包括大规模并行处理（MPP）数据库、数据挖掘、分布式文件系统、分布式数据库、云计算平台、互联网和可扩展的存储系统。</p>
+<h2 id="3-大数据的特点"><a href="#3-大数据的特点" class="headerlink" title="3.大数据的特点"></a>3.大数据的特点</h2><p>说起大数据，估计很多人都只是听过概念，但是具体是什么东西，怎么定义，没有一个标准的东西，因为在我们的印象中好像很多公司都叫大数据公司，业务形态则有几百种。</p>
+<p>在《大数据时代》提到了大数据的4个特征： Volume（大量）、Variety（多样）、Velocity（高速）、Value（价值），一般我们称之为4V。</p>
+<h2 id="Volume（大量）"><a href="#Volume（大量）" class="headerlink" title="Volume（大量）"></a>Volume（大量）</h2><p>大数据的特征首先就体现为“大”，从先Map3时代，一个小小的MB级别的Map3就可以满足很多人的需求，然而随着时间的推移，存储单位从过去的GB到TB，乃至现在的PB、EB级别。随着信息技术的高速发展，数据开始爆发性增</p>
+<p>长。社交网络（微博、推特、脸书）、移动网络、各种智能工具，服务工具等，都成为数据的来源。淘宝网近4亿的会员每天产生的商品交易数据约20TB；脸书约10亿的用户每天产生的日志数据超过300TB。迫切需要智能的算法、强大的数据处理平台和新的数据处理技术，来统计、分析、预测和实时处理如此大规模的数据。</p>
+<h2 id="Variety（多样）"><a href="#Variety（多样）" class="headerlink" title="Variety（多样）"></a>Variety（多样）</h2><p>广泛的数据来源，决定了大数据形式的多样性。任何形式的数据都可以产生作用，目前应用最广泛的就是推荐系统，如淘宝，网易云音乐、今日头条等，这些平台都会通过对用户的日志数据进行分析，从而进一步推荐用户喜欢的东西。日志数据是结构化明显的数据，还有一些数据结构化不明显，例如图片、音频、视频等，这些数据因果关系弱，就需要人工对其进行标注。</p>
+<h2 id="Velocity（高速）"><a href="#Velocity（高速）" class="headerlink" title="Velocity（高速）"></a>Velocity（高速）</h2><p>大数据的产生非常迅速，主要通过互联网传输。生活中每个人都离不开互联网，也就是说每天个人每天都在向大数据提供大量的资料。并且这些数据是需要及时处理的，因为花费大量资本去存储作用较小的历史数据是非常不划算的，对于一个平台而言，也许保存的数据只有过去几天或者一个月之内，再远的数据就要及时清理，不然代价太大。基于这种情况，大数据对处理速度有非常严格的要求，服务器中大量的资源都用于处理和计算数据，很多平台都需要做到实时分析。数据无时无刻不在产生，谁的速度更快，谁就有优势。</p>
+<h2 id="Value（价值）"><a href="#Value（价值）" class="headerlink" title="Value（价值）"></a>Value（价值）</h2><p>这也是大数据的核心特征。现实世界所产生的数据中，有价值的数据所占比例很小。相比于传统的小数据，大数据最大的价值在于通过从大量不相关的各种类型的数据中，挖掘出对未来趋势与模式预测分析有价值的数据，并通过机器学习方法、人工智能方法或数据挖掘方法深度分析，发现新规律和新知识，并运用于农业、金融、医疗等各个领域，从而最终达到改善社会治理、提高生产效率、推进科学研究的效果。</p>
+<h2 id="4-大数据分析"><a href="#4-大数据分析" class="headerlink" title="4.大数据分析"></a>4.大数据分析</h2><p>众所周知，大数据已经不简简单单是数据大的事实了，而最重要的现实是对大数据进行分析，只有通过分析才能获取很多智能的，深入的，有价值的信息。那么越来越多的应用涉及到大数据，而这些大数据的属性，包括数量，速度，多样性等等都是呈现了大数据不断增长的复杂性，所以大数据的分析方法在大数据领域就显得尤为重要，可以说是决定最终信息是否有价值的决定性因素。基于如此的认识，大数据分析普遍存在的方法理论有哪些呢？</p>
+<h2 id="4-1可视化分析"><a href="#4-1可视化分析" class="headerlink" title="4.1可视化分析"></a>4.1可视化分析</h2><p>大数据分析的使用者有大数据分析专家，同时还有普通用户，但是他们二者对于大数据分析最基本的要求就是可视化分析，因为可视化分析能够直观的呈现大数据特点，同时能够非常容易被读者所接受，就如同看图说话一样简单明了。</p>
+<h2 id="4-2数据挖掘算法"><a href="#4-2数据挖掘算法" class="headerlink" title="4.2数据挖掘算法"></a>4.2数据挖掘算法</h2><p>大数据分析的理论核心就是数据挖掘算法，各种数据挖掘的算法基于不同的数据类型和格式才能更加科学的呈现出数据本身具备的特点，也正是因为这些被全世界统计学家所公认的各种统计方法（可以称之为真理）才能深入数据内部，挖掘出公认的价值。另外一个方面也是因为有这些数据挖掘的算法才能更快速的处理大数据，如果一个算法得花上好几年才能得出结论，那大数据的价值也就无从说起了。</p>
+<h2 id="4-3预测分析能力"><a href="#4-3预测分析能力" class="headerlink" title="4.3预测分析能力"></a>4.3预测分析能力</h2><p>大数据分析最终要的应用领域之一就是预测性分析，从大数据中挖掘出特点，通过科学的建立模型，之后便可以通过模型带入新的数据，从而预测未来的数据。4.4语义引擎</p>
+<p>大数据分析广泛应用于网络数据挖掘，可从用户的搜索关键词、标签关键词、或其他输入语义，分析，判断用户需求，从而实现更好的用户体验和广告匹配。</p>
+<h2 id="4-5数据质量和数据管理"><a href="#4-5数据质量和数据管理" class="headerlink" title="4.5数据质量和数据管理"></a>4.5数据质量和数据管理</h2><p>大数据分析离不开数据质量和数据管理，高质量的数据和有效的数据管理，无论是在学术研究还是在商业应用领域，都能够保证分析结果的真实和有价值。</p>
+<h2 id="5-大数据技术"><a href="#5-大数据技术" class="headerlink" title="5.大数据技术"></a>5.大数据技术</h2><h2 id="5-1数据采集"><a href="#5-1数据采集" class="headerlink" title="5.1数据采集"></a>5.1数据采集</h2><p>ETL工具负责将分布的、异构数据源中的数据如关系数据、平面数据文件等抽取到临时中间层后进行清洗、转换、集成，最后加载到数据仓库或数据集市中成为联机分析处理、数据挖掘的基础。</p>
+<h2 id="5-2数据存取"><a href="#5-2数据存取" class="headerlink" title="5.2数据存取"></a>5.2数据存取</h2><p>关系数据库、NOSQL、SQL等。</p>
+<h2 id="5-3基础架构"><a href="#5-3基础架构" class="headerlink" title="5.3基础架构"></a>5.3基础架构</h2><p>云存储、分布式文件存储等。</p>
+<h2 id="5-4数据处理"><a href="#5-4数据处理" class="headerlink" title="5.4数据处理"></a>5.4数据处理</h2><p>自然语言处理(NLP，Natural Language Processing)是研究人与计算机交互的语言问题的一门学科。处理自然语言的关键是要让计算机”理解”自然语言，所以自然语言处理又叫做自然语言理解(NLU，Natural Language Understanding)，也称为计算语言学(Computational Linguistics)。一方面它是语言信息处理的一个分支，另一方面它是人工智能(AI, Artificial Intelligence)的核心课题之一。</p>
+<h2 id="5-5统计分析"><a href="#5-5统计分析" class="headerlink" title="5.5统计分析"></a>5.5统计分析</h2><p>假设检验、显著性检验、差异分析、相关分析、T检验、方差分析、卡方分析、偏相关分析、距离分析、回归分析、简单回归分析、多元回归分析、逐步回归、回归预测与残差分析、岭回归、logistic回归分析、曲线估计、因子分析、聚类分析、主成分分析、因子分析、快速聚类法与聚类法、判别分析、对应分析、多元对应分析（最优尺度分析）、bootstrap技术等等。</p>
+<h2 id="5-6数据挖掘"><a href="#5-6数据挖掘" class="headerlink" title="5.6数据挖掘"></a>5.6数据挖掘</h2><p>分类 （Classification）、估计（Estimation）、预测（Prediction）、相关性分组或关联规则（Affinity grouping or association rules）、聚类（Clustering）、描述和可视化、Description and Visualization）、复杂数据类型挖掘(Text, Web ,图形图像，视频，音频等)</p>
+<h2 id="5-7模型预测"><a href="#5-7模型预测" class="headerlink" title="5.7模型预测"></a>5.7模型预测</h2><p>预测模型、机器学习、建模仿真。</p>
+<h2 id="5-8结果呈现"><a href="#5-8结果呈现" class="headerlink" title="5.8结果呈现"></a>5.8结果呈现</h2><p>云计算、标签云、关系图等。</p>
+<h2 id="6-大数据在医疗中的应用"><a href="#6-大数据在医疗中的应用" class="headerlink" title="6.大数据在医疗中的应用"></a>6.大数据在医疗中的应用</h2><h2 id="6-1社会医疗现状"><a href="#6-1社会医疗现状" class="headerlink" title="6.1社会医疗现状"></a>6.1社会医疗现状</h2><p>医疗资源大部分80%集中在省市区，大医院资源又集中在30%三甲医院，优质的医疗和医生资源过度集中，百姓不管大病小病都会选择去省市的大医院，一则大医院本是负责重大疾病救治的，不但浪费了大医院的优质资源，还增加了医院和医生的负担。二则需要紧急治疗的患者因为不能及时享受到优质的资源，导致病情的加重。本都是为了能够看好病这一条原因，最后导致普通疾病治疗的成本攀高，大病急病治疗的延误，对于百姓整体健康水平的提高是及其不利的。</p>
+<h2 id="6-2预测疾病"><a href="#6-2预测疾病" class="headerlink" title="6.2预测疾病"></a>6.2预测疾病</h2><p>错误的饮食和生活习惯，环境改变，生活压力大等元素均会导致疾病生成，每一个疾病都不存在巧合，有果有因。不同于google通过搜索词预测流感趋势，预测疾病是通过医院对过往病人疾病及生成原因的大数据分析，预测一个人处于现在的生活状态下会得哪一种疾病何时会得。</p>
+<h2 id="6-3预防疾病"><a href="#6-3预防疾病" class="headerlink" title="6.3预防疾病"></a>6.3预防疾病</h2><p>美国强生OTDMS糖尿病管理软件，通过直观的数据图谱，显示2型糖尿病患者的先关血糖数据，帮助糖尿病患者更好的控制血糖，加强自我管理，自我预防。起到了很好的效果。通过大数据整合，对患者的病情分析，给患者提供正确医疗建议，有助于患者方便快捷的实现自助式医疗服务，能够起到很好的预防疾病及其并发疾病。</p>
+<h2 id="6-4精确医疗救助"><a href="#6-4精确医疗救助" class="headerlink" title="6.4精确医疗救助"></a>6.4精确医疗救助</h2><p>中国已经成为世界上最大的老龄化国家，60岁以上人口近两亿。老人基数大，且增长速度快，养老制度不健全，障碍问题突出，家庭支持功能弱化。如何有针对的赡养老人，或者对老人提供医疗救助服务，是如今社会面临的问题。通过社区，居委会，福利院等机构对当地的老人，如年龄，居住地，健康状况，疾病状况等进行登记。老人可通过手机软件，简单操作发送求助信息，得到针对性的医疗救助，附近的医院单位进行及时看护、治疗，防止意外的发生，不错过最佳的治疗时间。</p>
+<h2 id="6-5语音识别指定医疗方案"><a href="#6-5语音识别指定医疗方案" class="headerlink" title="6.5语音识别指定医疗方案"></a>6.5语音识别指定医疗方案</h2><p>通过引导语音交流，判断疾病可能性的打分制，提供医疗指导方案，解决医患比例严重不足，小病可以自动化处理过程。通过语音引导，比如第一步询问哪里不舒服或者哪里有疼痛，根据患者的回答进一步缩小一定范围，通过进一步的询问，最终根据后台大数据系统得到可能的病例分析，给出相应的打分，比如肠胃炎80%，胃溃疡50%…并给出各个结果的相应其他症状，并给出推荐治疗，或进一步检查方案。最终减轻小病的医生诊治，减轻医生负担，合理利用和分配医院资源。</p>
+<h2 id="7-结论"><a href="#7-结论" class="headerlink" title="7.结论"></a>7.结论</h2><p>大数据技术是指从各种各样类型的巨量数据中，快速获得有价值信息的技术。解决大数据问题的核心是大数据技术。目前所说的”大数据”不仅指数据本身的规模，也包括采集数据的工具、平台和数据分析系统。大数据研发目的是发展大数据技术并将其应用到相关领域，通过解决巨量数据处理问题促进其突破性发展。因此，大数据时代带来的挑战不仅体现在如何处理巨量数据从中获取有价值的信息，也体现在如何加强大数据技术研发，抢占时代发展的前沿。</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/21/%E6%B5%85%E8%B0%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%8C%BB%E7%96%97%E5%BA%94%E7%94%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%8C%BB%E7%96%97/" rel="tag">大数据医疗</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" rel="tag">计算机</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/02/21/%E7%81%AB%E8%BD%A6%E9%A9%B6%E5%90%91%E4%BA%91%E5%A4%96%EF%BC%8C%E6%A2%A6%E5%AE%89%E9%AD%82%E4%BA%8E%E4%B9%9D%E9%9C%84/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            火车驶向云外，梦安魂于九霄
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        guebi
+      </li>
+      <li>
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer.png" alt="顾北"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['对这个世界充满向往的理想主义者','愿你一生努力，一生被爱','想要的都拥有，得不到的都释怀'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

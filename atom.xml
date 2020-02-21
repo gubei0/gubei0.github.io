@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>顾北</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-02-21T07:42:26.870Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>guebi</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>火车驶向云外，梦安魂于九霄</title>
+    <link href="http://yoursite.com/2020/02/21/%E7%81%AB%E8%BD%A6%E9%A9%B6%E5%90%91%E4%BA%91%E5%A4%96%EF%BC%8C%E6%A2%A6%E5%AE%89%E9%AD%82%E4%BA%8E%E4%B9%9D%E9%9C%84/"/>
+    <id>http://yoursite.com/2020/02/21/%E7%81%AB%E8%BD%A6%E9%A9%B6%E5%90%91%E4%BA%91%E5%A4%96%EF%BC%8C%E6%A2%A6%E5%AE%89%E9%AD%82%E4%BA%8E%E4%B9%9D%E9%9C%84/</id>
+    <published>2020-02-21T06:59:35.000Z</published>
+    <updated>2020-02-21T07:42:26.870Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;作者：子健（刺猬乐队）&lt;br&gt;我那些残梦，灵异九霄&lt;br&gt;徒忙漫奋斗，满目沧愁&lt;br&gt;在滑翔之后，完美坠落&lt;br&gt;在四维宇宙，眩目遨游&lt;br&gt;我那些烂曲，流窜九州&lt;br&gt;云游魂飞奏，音愤符吼&lt;br&gt;在宿命身后，不停挥手&lt;br&gt;视死如归仇，毫无保留
+    
+    </summary>
+    
+    
+      <category term="音乐" scheme="http://yoursite.com/categories/%E9%9F%B3%E4%B9%90/"/>
+    
+    
+      <category term="音乐" scheme="http://yoursite.com/tags/%E9%9F%B3%E4%B9%90/"/>
+    
+      <category term="文艺" scheme="http://yoursite.com/tags/%E6%96%87%E8%89%BA/"/>
+    
+      <category term="理想" scheme="http://yoursite.com/tags/%E7%90%86%E6%83%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈大数据分析技术与医疗应用</title>
+    <link href="http://yoursite.com/2020/02/21/%E6%B5%85%E8%B0%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%8C%BB%E7%96%97%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2020/02/21/%E6%B5%85%E8%B0%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%8C%BB%E7%96%97%E5%BA%94%E7%94%A8/</id>
+    <published>2020-02-21T06:59:35.000Z</published>
+    <updated>2020-02-21T09:26:44.474Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2020/02/21/3uJl26.jpg&quot; alt=&quot;enter description here&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-引言&quot;&gt;&lt;a href=&quot;#1-引言&quot; class=&quot;headerlink&quot; title=&quot;1.引言&quot;&gt;&lt;/a&gt;1.引言&lt;/h2&gt;&lt;p&gt;“大数据”的概念已经提出了很多年。从一开始的神秘到如今的快速发展，对人们的生活产生了巨大的影响。从当初在巴士站、的士站人们的久久等待到如今随手滴滴打车的迅速接驾，从起初淘宝购物大海捞针似地寻找心仪的商品到如今淘宝主页精准的商品推荐，从当初为了美食一家一家店的尝试到如今根据美团推荐随心所欲挑选心仪饭店，可以说“大数据”已经渗入到生活的方方面面，为人们的生活提供了巨大的便利。&lt;/p&gt;
+&lt;p&gt;随着大数据浪潮的到来，政府通过出台一系列大数据产业发展规划与战略文件，持续推动大数据技术产业与传统领域实现全方位融合，促进我国经济结构转型的升级、提升经济发展质量和国际竞争力。
+    
+    </summary>
+    
+    
+      <category term="计算机" scheme="http://yoursite.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+      <category term="计算机" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="大数据" scheme="http://yoursite.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="大数据医疗" scheme="http://yoursite.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%8C%BB%E7%96%97/"/>
+    
+  </entry>
+  
+</feed>
