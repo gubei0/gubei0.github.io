@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Linux基础：用户与用户组管理 |  顾北
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="顾北" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-Linux基础：用户与用户组管理" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Linux基础：用户与用户组管理
+</h1>
+  
+
+    </header>
+    
+    
+    <div class="article-meta">
+      <a href="/2019/03/01/Linux%E5%9F%BA%E7%A1%80%EF%BC%9A%E7%94%A8%E6%88%B7%E4%B8%8E%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2019-02-28T16:00:00.000Z" itemprop="datePublished">2019-03-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.1k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p><img src="https://pic3.zhimg.com/v2-689a231ffec1c6a18839c8b7cf8ab8fb_b.jpg" alt="enter description here"></p>
+<h2 id="【实验目的及要求】"><a href="#【实验目的及要求】" class="headerlink" title="【实验目的及要求】"></a>【实验目的及要求】</h2><ol>
+<li><p>理解/etc/passwd 和/etc/grou文件各项的含义。</p>
+</li>
+<li><p>掌握增加用户，修改用户属性，删除用户方法。</p>
+</li>
+<li><p>掌握增加用户组，修改用户组，删除用户组方法。</p>
+</li>
+</ol>
+<h2 id="【实验原理】"><a href="#【实验原理】" class="headerlink" title="【实验原理】"></a>【实验原理】</h2><p>Linux操作系统是一个多用户、多任务的实时操作系统。用户管理与用户组管理是掌握应用Linux操作系统的重要技术，具备完整的丰富用户管理能力可以合理分配系统资源，提高系统服务和保证系统安全。<a id="more"></a></p>
+<h2 id="【实验环境】"><a href="#【实验环境】" class="headerlink" title="【实验环境】"></a>【实验环境】</h2><p>win10个人电脑一台</p>
+<p>VMware Workstation Pro 12</p>
+<p>centos 7.0 64位</p>
+<h2 id="【实验方案设计】"><a href="#【实验方案设计】" class="headerlink" title="【实验方案设计】"></a>【实验方案设计】</h2><p>(1).首先向系统申请一个账户，然后通过这个账户进入系统。</p>
+<p>(2).通过建立不同属性的用户，合理的利用和控制系统资源，帮助用户组织文件，保障用户的安全。</p>
+<p>(3).每个用户账户都有一个唯一的用户名和用户口令，用户登录时通过这个账户进入系统就是指在输入正确的用户名和口令之后，才能进入系统和自己的主目录。</p>
+<h2 id="【实验过程】"><a href="#【实验过程】" class="headerlink" title="【实验过程】"></a>【实验过程】</h2><p><strong>1、/etc/passwd文件</strong></p>
+<p>/etc/passwd是系统识别用户的一个文件，记录了已登录用户系统的所有用户。</p>
+<p>查看/etc/passwd文件的后五行：tail -5 /etc/passwd</p>
+<p><img src="https://pic1.zhimg.com/80/v2-3bf7eb868b14b5462746d83392a8e0e4_hd.jpg" alt="img"></p>
+<p>第一个字段：用户名（登录名）；最后一个用户名为gubei；</p>
+<p>第二个字段：口令；可以看到的是一个x，密码被映射到/etc/shadow文件中；</p>
+<p>第三个字段：UID；gubei这个用户UID为1000，表示普通用户；</p>
+<p>第四个字段：GID；gubei这个用户GID为1000，表示为私有用户组员；</p>
+<p>第五个字段：用户名全称；最后一个用户名全称为gubei；</p>
+<p>第六个字段：用户主目录所在位置；gubei这个用户是/hone/gubei；</p>
+<p>第七个字段：用户所用的shell类型，gubei用的是bash，所以设置为/bin/bash。</p>
+<p><strong>2、/etc/group文件</strong></p>
+<p>/etc/group文件是用户组的配置文件，内容包括用户和用户组。</p>
+<p>查看/etc/group文件的最后三行：tail -3 /etc/group</p>
+<p><img src="https://pic3.zhimg.com/80/v2-4f2ba1c2a845b864414cc4ca4dd71996_hd.jpg" alt="img"></p>
+<p>第一个字段：用户组名称；</p>
+<p>第二个字段：用户组密码；</p>
+<p>第三个字段：GID；</p>
+<p>第四个字段：用户列表。</p>
+<p><strong>3、增加用户</strong></p>
+<p>useradd命令：添加新用户账号</p>
+<p><img src="https://pic3.zhimg.com/80/v2-8396b07d151a697d3ae5139c7a823f6a_hd.jpg" alt="img"></p>
+<p><img src="https://pic1.zhimg.com/80/v2-61d24649bc00ffbdb155865a74971ffc_hd.jpg" alt="img"></p>
+<p>useradd -u UID 新账户名称：添加新用户并指定UID</p>
+<p><img src="https://pic3.zhimg.com/80/v2-a023fc3a71682c6d093c69037b517dbe_hd.jpg" alt="img"></p>
+<p><img src="https://pic1.zhimg.com/80/v2-439f3f8ece42cc7951c8aaed1fdb387c_hd.jpg" alt="img"></p>
+<p>可选参数：</p>
+<p>-c：加备注文字，备注文字保持在passwd备注栏中；</p>
+<p>-d：指定用户登入时的主目录，替换系统默认值/home/&lt;用户名&gt;；</p>
+<p>-e：指定账户的失效时间，日期格式为MM/DD/YY，默认表示永久有效；</p>
+<p>-f：指定在密码过期多少天即关闭该账户。如果是0，账号立即被停用；如果为-1，则账号一直可用，默认值为1；</p>
+<p>-m：自动建立用户的登入目录；</p>
+<p>-M：不要自动建立用户的登入目录；</p>
+<p>-r：建立系统账号；</p>
+<p>-s：指定目录登入后所使用的shell，默认值为/bin/bash。</p>
+<p><strong>4、修改用户权限</strong></p>
+<p>usermod [选项] [用户名]：修改用户账号的有关属性；</p>
+<p>usermod -u 1500 test1：更改用户账号test1的UID为1500；</p>
+<p><img src="https://pic1.zhimg.com/80/v2-28343cf61a6d1b1f6e24cdfa0617674c_hd.jpg" alt="img"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-cfe12ae1715ecfcfc851ba6871f48752_hd.jpg" alt="img"></p>
+<p><strong>5、删除用户</strong></p>
+<p>userdel [选项] [参数]：删除用户账号，不删除相关文件。</p>
+<p>userdel test1：删除用户账号test1</p>
+<p><img src="https://pic2.zhimg.com/80/v2-a8ffa91da5c1b63667f6be0783533b1d_hd.jpg" alt="img"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-59535e0c015aa5d5fcb229dcbfcf0df6_hd.jpg" alt="img"></p>
+<p>6、增加用户组</p>
+<p>group [选项] [yonghuzuming]：增加一个新的用户组。</p>
+<p>group test2：向系统中增加一个新组test2</p>
+<p><img src="https://pic1.zhimg.com/80/v2-87db077d6c967fc9e30e145a47ce4a90_hd.jpg" alt="img"></p>
+<p>groupadd -g 1300 test3：向系统中增加一个新组test3，并指定GID为1300</p>
+<p><img src="https://pic1.zhimg.com/80/v2-30a01a381222daa7f5aa485db36c3620_hd.jpg" alt="img"></p>
+<p><strong>7、修改用户组</strong></p>
+<p>groupmod [选项] [用户组名]：修改用户组信息</p>
+<p>groupmod -g 1400 test3：将用户组test3的UID改为140</p>
+<p><img src="https://pic1.zhimg.com/80/v2-356ac133032a09ac926891dc450c055c_hd.jpg" alt="img"></p>
+<p>groupmod -n test4 test3：将用户组test3改名为test4</p>
+<p><img src="https://pic3.zhimg.com/80/v2-4d22b4231937e4238f4472108564853a_hd.jpg" alt="img"></p>
+<p>可选参数：</p>
+<p>-g：GID为用户组指定新的组标识符；</p>
+<p>-o：和-g选项同时使用，用户组的新GID能和系统已有的用户组的GID相同；</p>
+<p>-n：将用户组的名字改为新名；</p>
+<p>-p：修改密码。</p>
+<p><strong>8、删除用户组</strong></p>
+<p>groupdel [用户组名]：从系统删除一个已有用户组，使用权限为root</p>
+<p>groupdel test2：从系统中删除用户组test2</p>
+<p><img src="https://pic4.zhimg.com/80/v2-18630523ed98eccba2afad1b542b7053_hd.jpg" alt="img"></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2019/03/01/Linux%E5%9F%BA%E7%A1%80%EF%BC%9A%E7%94%A8%E6%88%B7%E4%B8%8E%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2019/03/20/%E5%9F%BA%E4%BA%8EJava%E8%AF%AD%E8%A8%80%E5%AF%86%E7%A0%81%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%99%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            基于Java语言密码字典生成器
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        gubei
+      </li>
+      <li>
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/favicon.ico" alt="顾北"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+<!--
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+//-->
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['对这个世界充满向往的理想主义者','愿你一生努力，一生被爱','想要的都拥有，得不到的都释怀'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
